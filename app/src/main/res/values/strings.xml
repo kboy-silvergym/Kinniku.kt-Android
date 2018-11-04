@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Kinniku-kt</string>
+    <string-array name="menu_string_array">
+        <item>筋肉.ktとは</item>
+        <item>タイムライン</item>
+        <item>スケジュール</item>
+        <item>スポンサー様</item>
+        <item>このアプリについて</item>
+    </string-array>
 </resources>
