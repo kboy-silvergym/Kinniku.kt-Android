@@ -6,10 +6,10 @@
              android:background="@color/colorAccent"
              tools:context=".AboutFragment">
 
-    <TextView
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="About"/>
+    <WebView
+            android:id="@+id/webView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+    </WebView>
 
 </FrameLayout>
