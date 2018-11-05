@@ -1,5 +1,6 @@
 package net.kboy.kinniku_kt
 
+import android.app.Fragment
 import android.os.Bundle
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
@@ -21,23 +22,29 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener {
+            lateinit var fragment: android.support.v4.app.Fragment
+
             when (it.itemId) {
-                R.id.nav_camera -> {
-                    // Handle the camera action
+                R.id.nav_timeline -> {
+                    fragment = AboutFragment()
                 }
-                R.id.nav_gallery -> {
-
+                R.id.nav_schedule -> {
+                    fragment = AboutFragment()
                 }
-                R.id.nav_slideshow -> {
-
+                R.id.nav_speaker -> {
+                    fragment = AboutFragment()
                 }
-                R.id.nav_manage -> {
-
+                R.id.nav_sponsor -> {
+                    fragment = AboutFragment()
                 }
-                R.id.nav_share -> {
-
+                R.id.nav_aboutApp -> {
+                    fragment = AboutAppFragment()
                 }
             }
+            val transaction = supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.flContent, fragment)
+            transaction.commit()
+
             drawer_layout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
