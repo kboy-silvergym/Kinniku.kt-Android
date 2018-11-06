@@ -1,6 +1,7 @@
 package net.kboy.kinniku_kt
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.support.v4.view.GravityCompat
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -21,7 +22,7 @@ class MainActivity : AppCompatActivity() {
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener {
-            lateinit var fragment: android.support.v4.app.Fragment
+            lateinit var fragment: Fragment
 
             when (it.itemId) {
                 R.id.nav_timeline -> {
@@ -40,12 +41,16 @@ class MainActivity : AppCompatActivity() {
                     fragment = AboutAppFragment()
                 }
             }
-            val transaction = supportFragmentManager.beginTransaction()
-            transaction.replace(R.id.flContent, fragment)
-            transaction.commit()
+            showFragment(fragment)
 
             drawer_layout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
+    }
+
+    fun showFragment(fragment: Fragment){
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.flContent, fragment)
+        transaction.commit()
     }
 }

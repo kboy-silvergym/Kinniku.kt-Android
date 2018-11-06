@@ -1,6 +1,5 @@
 package net.kboy.kinniku_kt
 
-import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
@@ -26,14 +25,20 @@ class AboutAppFragment : Fragment() {
                     when (it) {
                         0 -> {
                             // version
+                            showFragment(AboutFragment())
                         }
                         1 -> {
                             // github
+                            showFragment(AboutFragment())
                         }
                     }
                 }
             }
         }
         return view
+    }
+
+    fun showFragment(fragment: Fragment){
+        (activity as MainActivity).showFragment(fragment)
     }
 }
