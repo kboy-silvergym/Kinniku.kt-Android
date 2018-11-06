@@ -3,23 +3,14 @@ package net.kboy.kinniku_kt
 import android.content.Context
 import android.os.Bundle
 import android.support.v4.app.Fragment
-import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 
-import net.kboy.kinniku_kt.dummy.DummyContent
-import net.kboy.kinniku_kt.dummy.DummyContent.DummyItem
-
-/**
- * A fragment representing a list of Items.
- * Activities containing this fragment MUST implement the
- * [AboutAppFragment.OnListFragmentInteractionListener] interface.
- */
 class AboutAppFragment : Fragment() {
-    private var listener: OnListFragmentInteractionListener? = null
+    private val menuString: Array<String> = arrayOf("バージョン", "github")
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,28 +21,19 @@ class AboutAppFragment : Fragment() {
         // Set the adapter
         if (view is RecyclerView) {
             with(view) {
-                layoutManager = GridLayoutManager(context, 3)
-                adapter = AboutAppRecyclerViewAdapter(DummyContent.ITEMS, listener)
+                layoutManager = LinearLayoutManager(context)
+                adapter = AboutAppRecyclerViewAdapter(menuString) {
+                    when (it) {
+                        0 -> {
+                            // version
+                        }
+                        1 -> {
+                            // github
+                        }
+                    }
+                }
             }
         }
         return view
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is OnListFragmentInteractionListener) {
-            listener = context
-        } else {
-            throw RuntimeException(context.toString() + " must implement OnListFragmentInteractionListener")
-        }
-    }
-
-    override fun onDetach() {
-        super.onDetach()
-        listener = null
-    }
-
-    interface OnListFragmentInteractionListener {
-        fun onListFragmentInteraction(item: DummyItem?)
     }
 }
