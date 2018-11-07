@@ -26,16 +26,16 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.nav_timeline -> {
-                    fragment = AboutFragment()
+                    fragment = WebViewFragment.create("https://kinniku-swift.connpass.com/event/99895/")
                 }
                 R.id.nav_schedule -> {
-                    fragment = AboutFragment()
+                    fragment = AboutAppFragment()
                 }
                 R.id.nav_speaker -> {
-                    fragment = AboutFragment()
+                    fragment = AboutAppFragment()
                 }
                 R.id.nav_sponsor -> {
-                    fragment = AboutFragment()
+                    fragment = AboutAppFragment()
                 }
                 R.id.nav_aboutApp -> {
                     fragment = AboutAppFragment()

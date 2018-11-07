@@ -31,7 +31,15 @@ class AboutAppRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
         holder.title.text = item
-        holder.detail.text = "2.0"
+
+        when (position) {
+            1 -> {
+                holder.detail.text = "1.0"
+            }
+            else -> {
+                holder.detail.text = ""
+            }
+        }
 
         with(holder.mView) {
             tag = position

@@ -23,13 +23,11 @@ class AboutAppFragment : Fragment() {
                 layoutManager = LinearLayoutManager(context)
                 adapter = AboutAppRecyclerViewAdapter(menuString) {
                     when (it) {
-                        0 -> {
-                            // version
-                            showFragment(AboutFragment())
-                        }
                         1 -> {
                             // github
-                            showFragment(AboutFragment())
+                            val fragment = WebViewFragment
+                                .create("https://github.com/kboy-silvergym/Kinniku.kt-Android")
+                            showFragment(fragment)
                         }
                     }
                 }
