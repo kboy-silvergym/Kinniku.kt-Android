@@ -25,7 +25,7 @@ class ScheduleFragment : Fragment() {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
 
-                val mock = Schedule(Date(), "プロテインで乾杯", "まずはプロテインで乾杯しましょう")
+                val mock = Schedule("19:00-19:20", "プロテインで乾杯", "まずはプロテインで乾杯しましょう")
                 adapter = ScheduleAdapter(arrayOf(mock, mock, mock))
             }
         }

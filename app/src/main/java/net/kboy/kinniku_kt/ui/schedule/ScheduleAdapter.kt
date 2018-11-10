@@ -18,7 +18,7 @@ class ScheduleAdapter(
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val schedule = mValues[position]
-        holder.time.text = schedule.date.toString()
+        holder.time.text = schedule.date
         holder.title.text = schedule.title
         holder.detail.text = schedule.detail
     }

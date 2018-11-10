@@ -1,10 +1,9 @@
 package net.kboy.kinniku_kt.data
 
 import java.io.Serializable
-import java.util.*
 
 data class Schedule(
-    val date: Date,
+    val date: String,
     val title: String,
     val detail: String
 ): Serializable
