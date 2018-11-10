@@ -6,9 +6,14 @@ import android.view.ViewGroup
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.data.Schedule
 
-class ScheduleAdapter(
-    private val mValues: Array<Schedule>
-) : RecyclerView.Adapter<ScheduleViewHolder>() {
+class ScheduleAdapter: RecyclerView.Adapter<ScheduleViewHolder>() {
+    private var items: MutableList<Schedule> = mutableListOf()
+
+    fun addSchedules(schedules: List<Schedule>) {
+        items.clear()
+        items.addAll(schedules)
+        notifyDataSetChanged()
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ScheduleViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -17,11 +22,11 @@ class ScheduleAdapter(
     }
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
-        val schedule = mValues[position]
+        val schedule = items[position]
         holder.time.text = schedule.date
         holder.title.text = schedule.title
         holder.detail.text = schedule.detail
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int = items.size
 }
