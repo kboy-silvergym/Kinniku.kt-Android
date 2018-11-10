@@ -14,7 +14,6 @@ class ScheduleRepository {
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {
-
                     val result = it.result
 
                     if (result != null)
