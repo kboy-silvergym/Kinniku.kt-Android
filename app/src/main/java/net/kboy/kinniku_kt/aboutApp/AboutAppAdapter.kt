@@ -1,4 +1,4 @@
-package net.kboy.kinniku_kt
+package net.kboy.kinniku_kt.aboutApp
 
 
 import android.support.v7.widget.RecyclerView
@@ -7,11 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import kotlinx.android.synthetic.main.view_list_aboutapp.view.*
+import net.kboy.kinniku_kt.R
 
-class AboutAppRecyclerViewAdapter(
+class AboutAppAdapter(
     private val mValues: Array<String>,
     private val mListener: (Int) -> Unit
-) : RecyclerView.Adapter<AboutAppRecyclerViewAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<AboutAppViewHolder>() {
 
     private val mOnClickListener: View.OnClickListener
 
@@ -22,13 +23,13 @@ class AboutAppRecyclerViewAdapter(
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AboutAppViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.view_list_aboutapp, parent, false)
-        return ViewHolder(view)
+        return AboutAppViewHolder(view)
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: AboutAppViewHolder, position: Int) {
         val item = mValues[position]
         holder.title.text = item
 
@@ -48,9 +49,4 @@ class AboutAppRecyclerViewAdapter(
     }
 
     override fun getItemCount(): Int = mValues.size
-
-    inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
-        val title: TextView = mView.label
-        val detail: TextView = mView.label_detail
-    }
 }
