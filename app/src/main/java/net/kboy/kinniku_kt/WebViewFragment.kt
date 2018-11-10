@@ -10,7 +10,7 @@ import kotlinx.android.synthetic.main.fragment_webview.*
 class WebViewFragment : Fragment() {
 
     private val url by lazy {
-        arguments!!.getSerializable(URL) as String
+        arguments?.getSerializable(URL) as String?
     }
 
     override fun onCreateView(
