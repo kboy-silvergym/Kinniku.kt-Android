@@ -1,4 +1,4 @@
-package net.kboy.kinniku_kt
+package net.kboy.kinniku_kt.ui
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,8 +7,9 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
-import net.kboy.kinniku_kt.aboutApp.AboutAppFragment
-import net.kboy.kinniku_kt.schedule.ScheduleFragment
+import net.kboy.kinniku_kt.R
+import net.kboy.kinniku_kt.ui.aboutApp.AboutAppFragment
+import net.kboy.kinniku_kt.ui.schedule.ScheduleFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,7 +19,9 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
         val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close
+            this, drawer_layout, toolbar,
+            R.string.navigation_drawer_open,
+            R.string.navigation_drawer_close
         )
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
@@ -28,7 +31,8 @@ class MainActivity : AppCompatActivity() {
 
             when (it.itemId) {
                 R.id.nav_timeline -> {
-                    fragment = WebViewFragment.create("https://kinniku-swift.connpass.com/event/99895/")
+                    fragment =
+                            WebViewFragment.create("https://kinniku-swift.connpass.com/event/99895/")
                 }
                 R.id.nav_schedule -> {
                     fragment = ScheduleFragment()

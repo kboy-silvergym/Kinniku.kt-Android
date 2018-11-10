@@ -1,4 +1,4 @@
-package net.kboy.kinniku_kt.aboutApp
+package net.kboy.kinniku_kt.ui.aboutApp
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -7,9 +7,9 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import net.kboy.kinniku_kt.MainActivity
+import net.kboy.kinniku_kt.ui.MainActivity
 import net.kboy.kinniku_kt.R
-import net.kboy.kinniku_kt.WebViewFragment
+import net.kboy.kinniku_kt.ui.WebViewFragment
 
 class AboutAppFragment : Fragment() {
     private val menuString: Array<String> = arrayOf("バージョン", "github")

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <TextView
+            android:id="@+id/timeLabel"
+            android:layout_width="90dp"
+            android:layout_height="30dp"
+            android:gravity="center"
+            android:text="19:00-19:20"
+            android:textColor="#ffffff"
+            android:layout_margin="8dp"
+            android:background="@color/colorPrimary"
+    />
+
+    <TextView
+            android:id="@+id/titleLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="8dp"
+            android:gravity="center"
+            android:text="LODGEに集合！"
+            android:textSize="36dp"
+            android:textStyle="bold"
+    />
+
+    <TextView
+            android:id="@+id/detailLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginRight="8dp"
+            android:text="主催のKBOYの挨拶とスポンサー様の初回の後プロテインで乾杯するところからスタート"
+            android:textSize="15dp"
+            android:textStyle="normal"
+            android:textAlignment="textStart"
+    />
+</LinearLayout>

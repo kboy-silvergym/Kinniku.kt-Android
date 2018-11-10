@@ -6,5 +6,5 @@
         android:name="net.kboy.kinniku_kt.AboutAppFragmentFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".aboutApp.AboutAppFragment"
-        tools:listitem="@layout/view_list_aboutapp"/>
+        tools:context=".ui.aboutApp.AboutAppFragment"
+        tools:listitem="@layout/list_item_aboutapp"/>

@@ -1,4 +1,4 @@
-package net.kboy.kinniku_kt.schedule
+package net.kboy.kinniku_kt.ui.schedule
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
@@ -8,7 +8,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import net.kboy.kinniku_kt.R
-import net.kboy.kinniku_kt.aboutApp.AboutAppAdapter
+import net.kboy.kinniku_kt.data.Schedule
+import java.util.*
 
 
 class ScheduleFragment : Fragment() {
@@ -23,7 +24,9 @@ class ScheduleFragment : Fragment() {
         if (view is RecyclerView) {
             with(view) {
                 layoutManager = LinearLayoutManager(context)
-                adapter = ScheduleAdapter(arrayOf("あ", "い"))
+
+                val mock = Schedule(Date(), "プロテインで乾杯", "まずはプロテインで乾杯しましょう")
+                adapter = ScheduleAdapter(arrayOf(mock, mock, mock))
             }
         }
         return view

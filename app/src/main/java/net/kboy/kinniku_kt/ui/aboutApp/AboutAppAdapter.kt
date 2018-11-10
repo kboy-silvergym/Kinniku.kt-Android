@@ -1,12 +1,10 @@
-package net.kboy.kinniku_kt.aboutApp
+package net.kboy.kinniku_kt.ui.aboutApp
 
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import kotlinx.android.synthetic.main.view_list_aboutapp.view.*
 import net.kboy.kinniku_kt.R
 
 class AboutAppAdapter(
@@ -25,7 +23,7 @@ class AboutAppAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AboutAppViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.view_list_aboutapp, parent, false)
+            .inflate(R.layout.list_item_aboutapp, parent, false)
         return AboutAppViewHolder(view)
     }
 
