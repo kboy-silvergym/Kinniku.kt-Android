@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
                     fragment = WebViewFragment.create("https://kinniku-swift.connpass.com/event/99895/")
                 }
                 R.id.nav_schedule -> {
-                    fragment = AboutAppFragment()
+                    fragment = ScheduleFragment()
                 }
                 R.id.nav_speaker -> {
                     fragment = AboutAppFragment()
