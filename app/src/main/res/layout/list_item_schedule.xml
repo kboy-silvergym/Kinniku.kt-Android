@@ -22,8 +22,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="24dp"
             android:layout_marginRight="8dp"
-            android:gravity="center"
-            android:text="LODGEに集合！"
+            android:text="LODGEに集合！LODGEに集合！ごご"
             android:textSize="36dp"
             android:textStyle="bold"
     />
@@ -39,6 +38,5 @@
             android:text="主催のKBOYの挨拶とスポンサー様の初回の後プロテインで乾杯するところからスタート"
             android:textSize="15dp"
             android:textStyle="normal"
-            android:textAlignment="textStart"
     />
 </LinearLayout>

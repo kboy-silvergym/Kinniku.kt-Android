@@ -23,9 +23,9 @@ class ScheduleAdapter: RecyclerView.Adapter<ScheduleViewHolder>() {
 
     override fun onBindViewHolder(holder: ScheduleViewHolder, position: Int) {
         val schedule = items[position]
-        holder.time.text = schedule.date
+        holder.time.text = schedule.time
         holder.title.text = schedule.title
-        holder.detail.text = schedule.detail
+        holder.detail.text = schedule.description
     }
 
     override fun getItemCount(): Int = items.size
