@@ -10,6 +10,8 @@ import kotlinx.android.synthetic.main.app_bar_main.*
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.ui.aboutApp.AboutAppFragment
 import net.kboy.kinniku_kt.ui.schedule.ScheduleFragment
+import net.kboy.kinniku_kt.ui.speaker.SpeakerFragment
+import net.kboy.kinniku_kt.ui.sponsor.SponsorFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -30,7 +32,7 @@ class MainActivity : AppCompatActivity() {
             lateinit var fragment: Fragment
 
             when (it.itemId) {
-                R.id.nav_timeline -> {
+                R.id.nav_about -> {
                     fragment =
                             WebViewFragment.create("https://kinniku-swift.connpass.com/event/99895/")
                 }
@@ -38,10 +40,10 @@ class MainActivity : AppCompatActivity() {
                     fragment = ScheduleFragment()
                 }
                 R.id.nav_speaker -> {
-                    fragment = AboutAppFragment()
+                    fragment = SpeakerFragment()
                 }
                 R.id.nav_sponsor -> {
-                    fragment = AboutAppFragment()
+                    fragment = SponsorFragment()
                 }
                 R.id.nav_aboutApp -> {
                     fragment = AboutAppFragment()
