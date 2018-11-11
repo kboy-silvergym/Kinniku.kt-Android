@@ -18,7 +18,13 @@ class SponsorFragment : Fragment() {
     }
 
     private val sponsorAdapter by lazy {
-        SponsorAdapter()
+        SponsorAdapter({
+            // webに飛ばす
+
+        }, {
+            // twitterに飛ばす
+
+        })
     }
 
     override fun onCreateView(
@@ -39,7 +45,6 @@ class SponsorFragment : Fragment() {
                 sponsorAdapter.addSponsor(it)
             }
         })
-
         viewModel.personalSponsors.observe(this, Observer {
             it?.let {
                 sponsorAdapter.addPersonalSponsor(it)

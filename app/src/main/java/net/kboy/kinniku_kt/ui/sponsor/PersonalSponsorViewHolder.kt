@@ -6,7 +6,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import kotlinx.android.synthetic.main.list_item_personal_sponsor.view.*
 
-class PersonalSponsorViewHolder(mView: View) : RecyclerView.ViewHolder(mView) {
+class PersonalSponsorViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
     var image: ImageView = mView.imageView
     val screenName: TextView = mView.screenNameLabel
 }

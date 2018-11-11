@@ -2,13 +2,17 @@ package net.kboy.kinniku_kt.ui.sponsor
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import com.squareup.picasso.Picasso
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.data.PersonalSponsor
 import net.kboy.kinniku_kt.data.Sponsor
 
-class SponsorAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class SponsorAdapter(
+    private val sponsorListener: (Sponsor) -> Unit,
+    private val personalListener: (PersonalSponsor) -> Unit
+): RecyclerView.Adapter<RecyclerView.ViewHolder>() {
     private var sponsors: MutableList<Sponsor> = mutableListOf()
     private var personalSponsors: MutableList<PersonalSponsor> = mutableListOf()
 
@@ -52,6 +56,12 @@ class SponsorAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             Picasso.get()
                 .load(sponsor.imgURL)
                 .into(holder.image)
+
+            with(holder.mView) {
+                setOnClickListener {
+                    sponsorListener(sponsor)
+                }
+            }
         } else if (holder is PersonalSponsorViewHolder) {
             val count = position - sponsors.size
             val personalSponsor = personalSponsors[count]
@@ -60,6 +70,12 @@ class SponsorAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
             Picasso.get()
                 .load(personalSponsor.imgURL)
                 .into(holder.image)
+
+            with(holder.mView) {
+                setOnClickListener {
+                    personalListener(personalSponsor)
+                }
+            }
         }
     }
 
