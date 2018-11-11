@@ -36,7 +36,13 @@ class SponsorFragment : Fragment() {
 
         viewModel.sponsors.observe(this, Observer {
             it?.let {
-                sponsorAdapter.add(it)
+                sponsorAdapter.addSponsor(it)
+            }
+        })
+
+        viewModel.personalSponsors.observe(this, Observer {
+            it?.let {
+                sponsorAdapter.addPersonalSponsor(it)
             }
         })
     }

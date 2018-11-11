@@ -26,7 +26,7 @@ class SponsorRepository {
     }
 
     fun getPersonalSponsors(): LiveData<List<PersonalSponsor>> {
-        db.collection("personalSponcer")
+        db.collection("PersonalSponcer")
             .get()
             .addOnCompleteListener {
                 if (it.isSuccessful) {
