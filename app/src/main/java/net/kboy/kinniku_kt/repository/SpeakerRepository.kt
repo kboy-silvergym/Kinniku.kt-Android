@@ -11,13 +11,10 @@ class SpeakerRepository {
 
     fun getSpeakers(): LiveData<List<Speaker>> {
         db.collection("Speaker")
-            .get()
-            .addOnCompleteListener {
-                if (it.isSuccessful) {
-                    val result = it.result
+            .addSnapshotListener { snapshot, e ->
 
-                    if (result != null)
-                        speakers.value = result.toObjects(Speaker::class.java)
+                if (snapshot != null) {
+                    speakers.value = snapshot.toObjects(Speaker::class.java)
                 }
             }
         return speakers
