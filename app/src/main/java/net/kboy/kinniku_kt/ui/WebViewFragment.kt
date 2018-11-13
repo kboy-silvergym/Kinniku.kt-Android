@@ -27,7 +27,6 @@ class WebViewFragment : Fragment() {
 
         if (url != null) {
             webView.loadUrl(url)
-            webView.loadUrl("https://kinniku-swift.connpass.com/event/99895/")
         }
     }
 

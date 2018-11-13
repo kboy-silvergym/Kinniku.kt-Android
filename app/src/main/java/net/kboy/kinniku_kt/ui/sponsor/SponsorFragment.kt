@@ -1,15 +1,19 @@
 package net.kboy.kinniku_kt.ui.sponsor
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_sponsor.*
 import net.kboy.kinniku_kt.R
+import net.kboy.kinniku_kt.data.PersonalSponsor
+import net.kboy.kinniku_kt.data.Sponsor
+import net.kboy.kinniku_kt.ui.MainActivity
+import net.kboy.kinniku_kt.ui.WebViewFragment
 import net.kboy.kinniku_kt.viewmodel.SponsorViewModel
 
 class SponsorFragment : Fragment() {
@@ -20,10 +24,10 @@ class SponsorFragment : Fragment() {
     private val sponsorAdapter by lazy {
         SponsorAdapter({
             // webに飛ばす
-
+            showSponsorDetail(it)
         }, {
             // twitterに飛ばす
-
+            showTwitter(it)
         })
     }
 
@@ -51,4 +55,23 @@ class SponsorFragment : Fragment() {
             }
         })
     }
+
+    private fun showSponsorDetail(sponsor: Sponsor) {
+        val url = sponsor.url
+        val fragment =
+            WebViewFragment.create(url)
+        showFragment(fragment)
+    }
+
+    private fun showTwitter(personalSponsor: PersonalSponsor) {
+        val url = "https://twitter.com/" + personalSponsor.screenName
+        val fragment =
+            WebViewFragment.create(url)
+        showFragment(fragment)
+    }
+
+    private fun showFragment(fragment: Fragment) {
+        (activity as MainActivity).showFragment(fragment)
+    }
+
 }
