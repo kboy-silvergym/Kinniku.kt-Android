@@ -54,6 +54,9 @@ class MainActivity : AppCompatActivity() {
             drawer_layout.closeDrawer(GravityCompat.START)
             return@setNavigationItemSelectedListener true
         }
+
+        // 初回のフラグメント
+        showFragment(ScheduleFragment())
     }
 
     fun showFragment(fragment: Fragment){
