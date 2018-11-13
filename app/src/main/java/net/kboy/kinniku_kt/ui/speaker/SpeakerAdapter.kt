@@ -3,6 +3,7 @@ package net.kboy.kinniku_kt.ui.speaker
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import com.squareup.picasso.Picasso
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.data.Speaker
 
@@ -24,9 +25,13 @@ class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
     override fun onBindViewHolder(holder: SpeakerViewHolder, position: Int) {
         val speaker = items[position]
         holder.name.text = speaker.name
-        holder.screenName.text = speaker.screenName
+        holder.screenName.text = "@" + speaker.screenName
         holder.title.text = speaker.title
         holder.reps.text = speaker.point + "reps"
+
+        Picasso.get()
+            .load(speaker.imgURL)
+            .into(holder.image)
     }
 
     override fun getItemCount(): Int = items.size
