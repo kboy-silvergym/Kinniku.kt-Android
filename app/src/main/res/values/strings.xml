@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Kinniku-kt</string>
+    <string name="app_name">筋肉.kt</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string-array name="menu_string_array">
