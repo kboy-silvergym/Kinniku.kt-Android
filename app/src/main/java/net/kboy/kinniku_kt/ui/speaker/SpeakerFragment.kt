@@ -1,16 +1,20 @@
 package net.kboy.kinniku_kt.ui.speaker
 
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.LinearLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_speaker.*
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.viewmodel.SpeakerViewModel
+
+enum class SortType {
+    ORDER, POINT
+}
 
 class SpeakerFragment : Fragment() {
     private val viewModel by lazy {
@@ -20,6 +24,8 @@ class SpeakerFragment : Fragment() {
     private val speakerAdapter by lazy {
         SpeakerAdapter()
     }
+
+    var sortType: SortType = SortType.POINT
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,8 +42,19 @@ class SpeakerFragment : Fragment() {
 
         viewModel.speakers.observe(this, Observer {
             it?.let {
-                speakerAdapter.addSchedules(it)
+                val sorted = it.sortedBy {
+                    when (sortType) {
+                        SortType.ORDER -> {
+                            it.order.toInt()
+                        }
+                        SortType.POINT -> {
+                            - it.point.toInt()
+                        }
+                    }
+                }
+                speakerAdapter.add(sorted)
             }
         })
     }
 }
+

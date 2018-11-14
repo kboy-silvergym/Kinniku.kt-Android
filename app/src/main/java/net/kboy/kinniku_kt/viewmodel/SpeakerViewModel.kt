@@ -8,12 +8,5 @@ import net.kboy.kinniku_kt.repository.SpeakerRepository
 
 class SpeakerViewModel : ViewModel() {
     private val repository = SpeakerRepository()
-    val speakers: LiveData<List<Speaker>>
-        get() {
-            val speakers = Transformations.map(repository.getSpeakers()) { it }
-            speakers.value?.sortedWith (Comparator {
-                    a,b ->  a.order.toInt() - b.order.toInt()
-            })
-            return speakers
-        }
+    val speakers: LiveData<List<Speaker>> = Transformations.map(repository.getSpeakers()) { it }
 }

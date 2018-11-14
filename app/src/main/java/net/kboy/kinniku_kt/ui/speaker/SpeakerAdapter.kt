@@ -10,7 +10,7 @@ import net.kboy.kinniku_kt.data.Speaker
 class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
     private var items: MutableList<Speaker> = mutableListOf()
 
-    fun addSchedules(speaker: List<Speaker>) {
+    fun add(speaker: List<Speaker>) {
         items.clear()
         items.addAll(speaker)
         notifyDataSetChanged()
