@@ -23,7 +23,7 @@ class SpeakerFragment : Fragment() {
         SpeakerAdapter()
     }
 
-    var sortType: SortType = SortType.ORDER
+    private var sortType: SortType = SortType.ORDER
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

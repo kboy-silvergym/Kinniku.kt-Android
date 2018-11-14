@@ -22,7 +22,7 @@ class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
     }
 
     private fun sort(speakers: List<Speaker>, sortType: SortType):  List<Speaker> {
-        val sorted = speakers.sortedBy {
+        return speakers.sortedBy {
             when (sortType) {
                 SortType.ORDER -> {
                     it.order.toInt()
@@ -32,7 +32,6 @@ class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
                 }
             }
         }
-        return sorted
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpeakerViewHolder {
