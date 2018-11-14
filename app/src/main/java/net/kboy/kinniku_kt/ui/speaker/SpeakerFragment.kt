@@ -23,7 +23,7 @@ class SpeakerFragment : Fragment() {
         SpeakerAdapter()
     }
 
-    var sortType: SortType = SortType.POINT
+    var sortType: SortType = SortType.ORDER
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,17 +40,7 @@ class SpeakerFragment : Fragment() {
 
         viewModel.speakers.observe(this, Observer {
             it?.let {
-                val sorted = it.sortedBy {
-                    when (sortType) {
-                        SortType.ORDER -> {
-                            it.order.toInt()
-                        }
-                        SortType.POINT -> {
-                            - it.point.toInt()
-                        }
-                    }
-                }
-                speakerAdapter.add(sorted)
+                speakerAdapter.add(it, sortType)
             }
         })
 
@@ -72,7 +62,7 @@ class SpeakerFragment : Fragment() {
                 sortType = SortType.POINT
             }
         }
-        speakerAdapter.notifyDataSetChanged()
+        speakerAdapter.update(sortType)
         return true
     }
 

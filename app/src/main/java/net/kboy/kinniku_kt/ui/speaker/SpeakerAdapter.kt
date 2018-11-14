@@ -10,10 +10,29 @@ import net.kboy.kinniku_kt.data.Speaker
 class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
     private var items: MutableList<Speaker> = mutableListOf()
 
-    fun add(speaker: List<Speaker>) {
+    fun add(speaker: List<Speaker>, sortType: SortType) {
+        val sorted = sort(speaker, sortType)
         items.clear()
-        items.addAll(speaker)
+        items.addAll(sorted)
         notifyDataSetChanged()
+    }
+
+    fun update(sortType: SortType) {
+        add(items, sortType)
+    }
+
+    private fun sort(speakers: List<Speaker>, sortType: SortType):  List<Speaker> {
+        val sorted = speakers.sortedBy {
+            when (sortType) {
+                SortType.ORDER -> {
+                    it.order.toInt()
+                }
+                SortType.POINT -> {
+                    - it.point.toInt()
+                }
+            }
+        }
+        return sorted
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpeakerViewHolder {
