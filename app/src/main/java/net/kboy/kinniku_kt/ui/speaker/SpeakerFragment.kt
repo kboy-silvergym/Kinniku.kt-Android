@@ -1,9 +1,7 @@
 package net.kboy.kinniku_kt.ui.speaker
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -55,6 +53,28 @@ class SpeakerFragment : Fragment() {
                 speakerAdapter.add(sorted)
             }
         })
+
+        // メニューつける
+        setHasOptionsMenu(true)
     }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            R.id.sort_order -> {
+                sortType = SortType.ORDER
+            }
+            R.id.sort_point -> {
+                sortType = SortType.POINT
+            }
+        }
+        speakerAdapter.notifyDataSetChanged()
+        return true
+    }
+
 }
 
