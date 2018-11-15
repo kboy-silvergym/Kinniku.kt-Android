@@ -66,5 +66,9 @@ class SpeakerFragment : Fragment() {
         return true
     }
 
+    private fun showVoteDialog(){
+
+    }
+
 }
 
