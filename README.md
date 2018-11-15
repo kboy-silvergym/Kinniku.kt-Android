@@ -15,7 +15,7 @@ The developer conference for Muscle Engineers who are good at Kotlin development
 |<img src="readme-images/screen1.png">|<img src="readme-images/screen2.png">|<img src="readme-images/screen3.png">|
 
 |Speaker List|Sponsor List|Info|
-|:--:|:--:|:--:|:--:|
+|:--:|:--:|:--:|
 |<img src="readme-images/screen4.png">|<img src="readme-images/screen5.png ">|<img src="readme-images/screen6.png">|
 
 ## Media
