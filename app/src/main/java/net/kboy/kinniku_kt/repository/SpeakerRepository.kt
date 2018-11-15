@@ -19,4 +19,8 @@ class SpeakerRepository {
             }
         return speakers
     }
+
+    fun vote(speaker: Speaker, point: Int) {
+        // https://firebase.google.com/docs/firestore/manage-data/add-data?hl=ja
+    }
 }

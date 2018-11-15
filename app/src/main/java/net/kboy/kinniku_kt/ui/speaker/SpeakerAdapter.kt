@@ -1,13 +1,16 @@
 package net.kboy.kinniku_kt.ui.speaker
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import net.kboy.kinniku_kt.R
 import net.kboy.kinniku_kt.data.Speaker
 
-class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
+class SpeakerAdapter(
+    private val screenNameListener: (Speaker) -> Unit,
+    private val voteListener: (Speaker) -> Unit
+) : RecyclerView.Adapter<SpeakerViewHolder>() {
     private var items: MutableList<Speaker> = mutableListOf()
 
     fun add(speaker: List<Speaker>, sortType: SortType) {
@@ -43,13 +46,24 @@ class SpeakerAdapter : RecyclerView.Adapter<SpeakerViewHolder>() {
     override fun onBindViewHolder(holder: SpeakerViewHolder, position: Int) {
         val speaker = items[position]
         holder.name.text = speaker.name
-        holder.screenName.text = "@" + speaker.screenName
+        holder.screenNameButton.text = "@" + speaker.screenName
         holder.title.text = speaker.title
         holder.reps.text = speaker.point + "reps"
 
         Picasso.get()
             .load(speaker.imgURL)
             .into(holder.image)
+
+        with(holder.screenNameButton) {
+            setOnClickListener {
+                screenNameListener(speaker)
+            }
+        }
+        with(holder.voteButton) {
+            setOnClickListener {
+                voteListener(speaker)
+            }
+        }
     }
 
     override fun getItemCount(): Int = items.size

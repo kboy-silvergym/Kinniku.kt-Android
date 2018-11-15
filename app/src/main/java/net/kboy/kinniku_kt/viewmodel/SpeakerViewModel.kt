@@ -9,4 +9,8 @@ import net.kboy.kinniku_kt.repository.SpeakerRepository
 class SpeakerViewModel : ViewModel() {
     private val repository = SpeakerRepository()
     val speakers: LiveData<List<Speaker>> = Transformations.map(repository.getSpeakers()) { it }
+
+    fun vote(speaker: Speaker, point: Int){
+        repository.vote(speaker, point)
+    }
 }

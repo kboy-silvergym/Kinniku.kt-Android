@@ -1,5 +1,6 @@
 package net.kboy.kinniku_kt.ui.speaker
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
@@ -8,6 +9,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_speaker.*
 import net.kboy.kinniku_kt.R
+import net.kboy.kinniku_kt.data.Speaker
+import net.kboy.kinniku_kt.ui.MainActivity
+import net.kboy.kinniku_kt.ui.WebViewFragment
 import net.kboy.kinniku_kt.viewmodel.SpeakerViewModel
 
 enum class SortType {
@@ -20,7 +24,13 @@ class SpeakerFragment : Fragment() {
     }
 
     private val speakerAdapter by lazy {
-        SpeakerAdapter()
+        SpeakerAdapter({
+            // twitter
+            showTwitter(it)
+        }, {
+            // vote
+            showVoteDialog(it)
+        })
     }
 
     private var sortType: SortType = SortType.ORDER
@@ -66,9 +76,48 @@ class SpeakerFragment : Fragment() {
         return true
     }
 
-    private fun showVoteDialog(){
+    private fun showTwitter(speaker: Speaker) {
+        val url = "https://twitter.com/" + speaker.screenName
+        val fragment =
+            WebViewFragment.create(url)
+        showFragment(fragment)
+    }
+
+    private fun showVoteDialog(speaker: Speaker){
+        val items: Array<String> = arrayOf("デカイ！(3reps)", "肩メロン！(2reps)", "キレてる！(1reps)")
+        var checkedItemIndex: Int = 0
+        AlertDialog
+            .Builder(activity!!)
+            .setTitle("${speaker.name}の筋肉は?")
+            .setSingleChoiceItems(items, 0) { _, i ->
+                checkedItemIndex = i
+            }
+            .setPositiveButton("OK") { _, _ ->
+                vote(speaker, checkedItemIndex)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
+    private fun vote(speaker: Speaker, index: Int){
+        var point = 1
+        when (index) {
+            0 -> {
+                point = 3
+            }
+            1 -> {
+                point = 2
+            }
+            2 -> {
+                point = 1
+            }
+        }
+        // vote to firebase
 
     }
 
+    private fun showFragment(fragment: Fragment) {
+        (activity as MainActivity).showFragment(fragment)
+    }
 }
 
