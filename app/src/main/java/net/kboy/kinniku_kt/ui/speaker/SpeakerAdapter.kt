@@ -28,10 +28,10 @@ class SpeakerAdapter(
         return speakers.sortedBy {
             when (sortType) {
                 SortType.ORDER -> {
-                    it.order.toInt()
+                    it.order
                 }
                 SortType.POINT -> {
-                    - it.point.toInt()
+                    - it.point
                 }
             }
         }
@@ -48,7 +48,7 @@ class SpeakerAdapter(
         holder.name.text = speaker.name
         holder.screenNameButton.text = "@" + speaker.screenName
         holder.title.text = speaker.title
-        holder.reps.text = speaker.point + "reps"
+        holder.reps.text = speaker.point.toString() + "reps"
 
         Picasso.get()
             .load(speaker.imgURL)

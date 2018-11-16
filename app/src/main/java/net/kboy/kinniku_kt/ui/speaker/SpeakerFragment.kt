@@ -85,7 +85,7 @@ class SpeakerFragment : Fragment() {
 
     private fun showVoteDialog(speaker: Speaker){
         val items: Array<String> = arrayOf("デカイ！(3reps)", "肩メロン！(2reps)", "キレてる！(1reps)")
-        var checkedItemIndex: Int = 0
+        var checkedItemIndex = 0
         AlertDialog
             .Builder(activity!!)
             .setTitle("${speaker.name}の筋肉は?")
@@ -100,19 +100,21 @@ class SpeakerFragment : Fragment() {
     }
 
     private fun vote(speaker: Speaker, index: Int){
-        var point = 1
+        var addPoint = 1
         when (index) {
             0 -> {
-                point = 3
+                addPoint = 3
             }
             1 -> {
-                point = 2
+                addPoint = 2
             }
             2 -> {
-                point = 1
+                addPoint = 1
             }
         }
         // vote to firebase
+        val newPoint = speaker.point + addPoint
+        viewModel.vote(speaker, newPoint)
 
     }
 
